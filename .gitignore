@@ -16,3 +16,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 config/keys.yml
+
+# Ignore some rails db files
+/db/schema.rb
+/db/structure.sql
