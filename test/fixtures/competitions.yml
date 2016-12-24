@@ -1,11 +1,17 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+toronto:
+  tba_code: ""
+  name: "Toronto Central"
+  city: "Toronto"
+  province: "Ontario"
+  country: "Canada"
+  start_date: 2016-03-15
+  end_date: 2016-03-17
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+barrie:
+  tba_code: ""
+  name: "Barrie North"
+  city: "Barrie"
+  province: "Ontario"
+  country: "Canada"
+  start_date: 2016-03-22
+  end_date: 2016-03-24

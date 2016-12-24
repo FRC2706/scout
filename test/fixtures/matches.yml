@@ -1,11 +1,19 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+success_2706:
+  number: 1
+  scout: "The Dude"
+  device_id: "Android_device_of_the_guy"
+  start: 2016-03-15 10:11:30
+  human_player_notes: "None"
+  general_notes: "None"
+  competition_id: <%= ActiveRecord::FixtureSet.identify(:toronto) %>
+  team_id: <%= ActiveRecord::FixtureSet.identify(:merge_robotics) %>
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+fail_2706:
+  number: 10
+  scout: "The Dude"
+  device_id: "Android_device_of_the_guy"
+  start: 2016-03-15 11:11:30
+  human_player_notes: "None"
+  general_notes: "None"
+  competition_id: <%= ActiveRecord::FixtureSet.identify(:toronto) %>
+  team_id: <%= ActiveRecord::FixtureSet.identify(:merge_robotics) %>

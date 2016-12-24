@@ -1,11 +1,8 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+low_goal:
+  start_x: 40
+  start_y: 10
+  start_x: 80
+  start_y: 10
+  success: false
+  objective_id: <%= ActiveRecord::FixtureSet.identify(:low_goal) %>
+  match_id: <%= ActiveRecord::FixtureSet.identify(:first_2706) %>

@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class MatchesControllerTest < ActionDispatch::IntegrationTest
+  fixtures :competitions, :teams
+
   setup do
-    @match = matches(:one)
+    @match = matches(:success_2706)
   end
 
   test "should get index" do
@@ -17,7 +19,9 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create match" do
     assert_difference('Match.count') do
-      post matches_url, params: { match: {  } }
+      @competition = competitions(:toronto)
+      @team = teams(:merge_robotics)
+      post matches_url, params: { match: { number: 100, competition_id: @competition.id, team_id: @team.id } }
     end
 
     assert_redirected_to match_url(Match.last)
