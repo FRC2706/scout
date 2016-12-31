@@ -26,10 +26,14 @@ commands:
     run: bin/rails server -b 192.168.64.1 -p 40106
   test:
     syntax:
-      argument: file
-      optional: args...
-    desc: run tests
-    run: bin/rake test
+      optional: file args...
+    desc: 'run all tests or a specific test file'
+    run: |
+      if [[ $# -eq 0 ]]; then
+        bin/rake test
+      else
+        bundle exec ruby -Itest "$@"
+      fi
 railgun:
   image: dev:railgun-common-services-0.2.x
   services:
