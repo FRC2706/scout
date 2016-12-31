@@ -4,16 +4,17 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
   fixtures :competitions, :teams
 
   setup do
+    @competition = competitions(:toronto)
     @match = matches(:success_2706)
   end
 
   test "should get index" do
-    get matches_url
+    get competition_matches_url(competition_id: @competition.id)
     assert_response :success
   end
 
   test "should get new" do
-    get new_match_url
+    get new_competition_match_url(competition_id: @competition.id)
     assert_response :success
   end
 
@@ -21,7 +22,7 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Match.count') do
       @competition = competitions(:toronto)
       @team = teams(:merge_robotics)
-      post matches_url, params: { match: { number: 100, competition_id: @competition.id, team_id: @team.id } }
+      post competition_matches_url(competition_id: @competition.id), params: { match: { number: 100, competition_id: @competition.id, team_id: @team.id } }
     end
 
     assert_redirected_to match_url(Match.last)
@@ -47,6 +48,6 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
       delete match_url(@match)
     end
 
-    assert_redirected_to matches_url
+    assert_redirected_to competition_matches_url(@match.competition)
   end
 end

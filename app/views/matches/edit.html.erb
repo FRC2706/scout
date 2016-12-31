@@ -3,4 +3,4 @@
 <%= render 'form', match: @match %>
 
 <%= link_to 'Show', @match %> |
-<%= link_to 'Back', matches_path %>
+<%= link_to 'Back', competition_matches_path(@match.competition) %>

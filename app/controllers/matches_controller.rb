@@ -1,10 +1,11 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
-  # GET /matches
-  # GET /matches.json
+  # GET /competition/:competition_id/matches
+  # GET /competition/:competition_id/matches.json
   def index
-    @matches = Match.all
+    competition = Competition.find(params[:competition_id])
+    @matches = competition.matches
   end
 
   # GET /matches/1
@@ -12,19 +13,21 @@ class MatchesController < ApplicationController
   def show
   end
 
-  # GET /matches/new
+  # GET /competition/:competition_id/matches/new
   def new
-    @match = Match.new
+    competition = Competition.find(params[:competition_id])
+    @match = competition.matches.build
   end
 
   # GET /matches/1/edit
   def edit
   end
 
-  # POST /matches
-  # POST /matches.json
+  # POST /competition/:competition_id/matches
+  # POST /competition/:competition_id/matches.json
   def create
-    @match = Match.new(match_params)
+    competition = Competition.find(params[:competition_id])
+    @match = competition.matches.create(match_params)
 
     respond_to do |format|
       if @match.save
@@ -54,9 +57,10 @@ class MatchesController < ApplicationController
   # DELETE /matches/1
   # DELETE /matches/1.json
   def destroy
+    competition = @match.competition
     @match.destroy
     respond_to do |format|
-      format.html { redirect_to matches_url, notice: 'Match was successfully destroyed.' }
+      format.html { redirect_to competition_matches_url(competition), notice: 'Match was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
