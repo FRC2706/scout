@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+.container { max-width: 100%; }
+.table.collapse.in {display: table}
