@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class TheBlueAllianceServiceTest < ActiveSupport::TestCase
   setup do
     @service = TheBlueAllianceService.new
@@ -15,4 +17,8 @@ class TheBlueAllianceServiceTest < ActiveSupport::TestCase
     assert response[0]['year'], Time.now.year.to_s
   end
 
+  test 'team_list obtains all teams' do
+    response = @service.team_list
+    assert response
+  end
 end

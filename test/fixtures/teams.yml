@@ -1,7 +1,15 @@
 merge_robotics:
   number: 2706
   name: 'Merge Robotics'
+  rookie_year: 2016
+  locality: 'Carp'
+  region: 'ON'
+  country: 'Canada'
 
 simbotics:
   number: 1114
   name: 'Simbotics'
+  rookie_year: 2003
+  locality: 'Saint Catharines'
+  region: 'ON'
+  country: 'Canada'

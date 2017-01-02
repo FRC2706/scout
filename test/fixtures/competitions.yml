@@ -6,6 +6,7 @@ toronto:
   country: "Canada"
   start_date: 2016-03-15
   end_date: 2016-03-17
+  year: 2016-01-01
 
 barrie:
   tba_code: ""
@@ -15,3 +16,4 @@ barrie:
   country: "Canada"
   start_date: 2016-03-22
   end_date: 2016-03-24
+  year: 2016-01-01
