@@ -7,6 +7,8 @@ success_2706:
   general_notes: "None"
   competition_id: <%= ActiveRecord::FixtureSet.identify(:toronto) %>
   team_id: <%= ActiveRecord::FixtureSet.identify(:merge_robotics) %>
+  time_defending: 0
+  time_dead: 0
 
 fail_2706:
   number: 10
@@ -17,3 +19,5 @@ fail_2706:
   general_notes: "None"
   competition_id: <%= ActiveRecord::FixtureSet.identify(:toronto) %>
   team_id: <%= ActiveRecord::FixtureSet.identify(:merge_robotics) %>
+  time_defending: 0
+  time_dead: 0

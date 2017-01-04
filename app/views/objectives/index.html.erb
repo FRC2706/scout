@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Objectives</h2>
+
+<table class="table table-striped table-bordered table-sm">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Points</td>
+      <td>Year</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @objectives.each do |objective| %>
+      <tr>
+        <td><%= objective.name %></td>
+        <td><%= objective.points %></td>
+        <td><%= objective.year.year %></td>
+        <td><%= link_to 'Edit', edit_objective_path(objective) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Objective', new_objective_path %>

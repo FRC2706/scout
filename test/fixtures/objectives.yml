@@ -1,59 +1,9 @@
-low_bar:
+one:
   name: "Low Bar Defense"
   points: 1.0
+  year: 2016-01-01
 
-portcullis:
-  name: "Portcullis Defense"
-  points: 1.0
-
-chevale:
-  name: "Chevale Defense"
-  points: 1.0
-
-moat:
-  name: "Moat Defense"
-  points: 1.0
-
-rampart:
-  name: "Rampart Defense"
-  points: 1.0
-
-drawbridge:
-  name: "Drawbridge Defense"
-  points: 1.0
-
-sally_port:
-  name: "Sally Port Defense"
-  points: 1.0
-
-rock_wall:
-  name: "Rock Wall Defense"
-  points: 1.0
-
-rough_terrain:
-  name: "Rough Terrain"
-  points: 1.0
-
-challenge:
-  name: "Challenge Tower"
-  points: 1.0
-
-scaled:
-  name: "Scaled Tower"
-  points: 1.0
-
-high_goal:
-  name: "High Goal"
-  points: 1.0
-
-low_goal:
-  name: "Low Goal"
-  points: 1.0
-
-ground_pickup:
-  name: "Ground Pickup"
-  points: 1.0
-
-wall_pickup:
-  name: "Wall Pickup"
-  points: 1.0
+two:
+  name: "Ball Pickup"
+  points: 0.0
+  year: 2016-01-01
