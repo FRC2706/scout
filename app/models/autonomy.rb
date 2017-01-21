@@ -1,4 +1,4 @@
 class Autonomy < ApplicationRecord
   belongs_to :objective
-  belongs_to :event
+  belongs_to :match
 end

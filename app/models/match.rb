@@ -5,5 +5,4 @@ class Match < ApplicationRecord
   has_many :events
 
   validates :number, presence: true
-  validates :number, uniqueness: true
 end

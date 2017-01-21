@@ -5,6 +5,7 @@
 <table class="table table-striped table-bordered table-sm">
   <thead>
     <tr>
+      <td>Id</td>
       <td>Name</td>
       <td>Points</td>
       <td>Year</td>
@@ -14,6 +15,7 @@
   <tbody>
     <% @objectives.each do |objective| %>
       <tr>
+        <td><%= objective.id %></td>
         <td><%= objective.name %></td>
         <td><%= objective.points %></td>
         <td><%= objective.year.year %></td>
