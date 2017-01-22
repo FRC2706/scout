@@ -11,6 +11,8 @@ class MatchesController < ApplicationController
   # GET /matches/1
   # GET /matches/1.json
   def show
+    @autonomies = @match.autonomies
+    @events = @match.events
   end
 
   # GET /competition/:competition_id/matches/new

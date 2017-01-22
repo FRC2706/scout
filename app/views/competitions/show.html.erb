@@ -18,4 +18,27 @@
   </tr>
 </table>
 
+<table class="table table-striped table-bordered table-sm">
+  <thead>
+  <tr>
+    <td><b>Id</b></td>
+    <td><b>Number</b></td>
+    <td><b>Team</b></td>
+    <td><b>Defending</b></td>
+    <td><b>Dead</b></td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @matches.each do |match| %>
+    <tr>
+      <td><%= link_to match.id, match %></td>
+      <td><%= match.number %></td>
+      <td><%= "#{match.team.number} - #{match.team.name}" %></td>
+      <td><%= match.time_defending %></td>
+      <td><%= match.time_dead %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Back', competitions_path %>
