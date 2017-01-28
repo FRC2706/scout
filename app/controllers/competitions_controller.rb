@@ -1,6 +1,8 @@
 class CompetitionsController < ApplicationController
   before_action :set_competition, only: [:show, :edit, :update, :destroy]
 
+  swagger_controller :competitions, "Competitions"
+
   # GET /competitions
   # GET /competitions.json
   def index
@@ -9,6 +11,15 @@ class CompetitionsController < ApplicationController
 
   # GET /competitions/1
   # GET /competitions/1.json
+  swagger_api :show do
+    summary "To show a competition"
+    notes "Implementation notes, such as required params, example queries for apis are written here."
+    param :path, :id, :integer, :optional, "Competition Id"
+    response :ok, "Success", :Competition
+    response :unauthorized
+    response :not_acceptable
+    response :not_found
+  end
   def show
     @matches = @competition.matches.all
   end
@@ -24,6 +35,13 @@ class CompetitionsController < ApplicationController
 
   # POST /competitions
   # POST /competitions.json
+  swagger_api :create do
+    summary "To create a competition"
+    notes "Implementation notes, such as required params, example queries for apis are written here."
+    param :form, "competition[name]", :string, :required, "Name of Competition"
+    response :success
+    response :unprocessable_entity
+  end
   def create
     @competition = Competition.new(competition_params)
 

@@ -34,14 +34,12 @@
 
   <script type="text/javascript">
     $(function () {
-        // get the url from search bar
-        var url = window.location.search.match(/url=([^&]+)/);
-        if (url && url.length > 1) {
-            url = decodeURIComponent(url[1]);
-        } else {
-            // point to api-docs.json to read API documentation
-            url = "/api/api-docs.json";
-        }
+      var url = window.location.search.match(/url=([^&]+)/);
+      if (url && url.length > 1) {
+        url = decodeURIComponent(url[1]);
+      } else {
+        url = "/api-docs.json";
+      }
 
       hljs.configure({
         highlightSizeThreshold: 5000

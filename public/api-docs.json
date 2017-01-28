@@ -3,7 +3,10 @@
   "swaggerVersion": "1.2",
   "basePath": "http://scout.myshopify.io",
   "apis": [
-
+    {
+      "path": "/competitions.{format}",
+      "description": "Competitions"
+    }
   ],
   "authorizations": null,
   "info": {
