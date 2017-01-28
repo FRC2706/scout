@@ -22,6 +22,10 @@ class CompetitionsController < ApplicationController
   end
   def show
     @matches = @competition.matches.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @matches}
+    end
   end
 
   # GET /competitions/new
