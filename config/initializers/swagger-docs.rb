@@ -1,9 +1,15 @@
+class Swagger::Docs::Config
+  def self.transform_path(path, api_version)
+    "apidocs/#{path}"
+  end
+end
+
 Swagger::Docs::Config.register_apis({
   "1.0" => {
     # the extension used for the API
     :api_extension_type => :json,
     # location where our api doc files will be generated, as of now we will store files under public directory
-    :api_file_path => "public",
+    :api_file_path => "public/apidocs",
     # base path url of our application
     # while using production mode, point it to production url
     :base_path => "http://scout.myshopify.io",

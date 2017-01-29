@@ -5,17 +5,24 @@ class CompetitionsController < ApplicationController
 
   # GET /competitions
   # GET /competitions.json
+  swagger_api :index do
+    summary "Retrieve all Competitions"
+    response :unauthorized
+  end
   def index
     @competitions = Competition.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @competitions}
+    end
   end
 
   # GET /competitions/1
   # GET /competitions/1.json
   swagger_api :show do
     summary "To show a competition"
-    notes "Implementation notes, such as required params, example queries for apis are written here."
     param :path, :id, :integer, :optional, "Competition Id"
-    response :ok, "Success", :Competition
+    response :ok, "Success", :Match
     response :unauthorized
     response :not_acceptable
     response :not_found
@@ -41,7 +48,6 @@ class CompetitionsController < ApplicationController
   # POST /competitions.json
   swagger_api :create do
     summary "To create a competition"
-    notes "Implementation notes, such as required params, example queries for apis are written here."
     param :form, "competition[name]", :string, :required, "Name of Competition"
     response :success
     response :unprocessable_entity
@@ -62,6 +68,14 @@ class CompetitionsController < ApplicationController
 
   # PATCH/PUT /competitions/1
   # PATCH/PUT /competitions/1.json
+  swagger_api :update do
+    summary "Updates an existing Competition"
+    param :path, :id, :integer, :required, "Competition Id"
+    param :form, :name, :string, :optional, "Competition name"
+    response :unauthorized
+    response :not_found
+    response :unprocessable_entity
+  end
   def update
     respond_to do |format|
       if @competition.update(competition_params)
@@ -76,6 +90,12 @@ class CompetitionsController < ApplicationController
 
   # DELETE /competitions/1
   # DELETE /competitions/1.json
+  swagger_api :destroy do
+    summary "Deletes a Competition"
+    param :path, :id, :integer, :required, "Competition Id"
+    response :unauthorized
+    response :not_found
+  end
   def destroy
     @competition.destroy
     respond_to do |format|
