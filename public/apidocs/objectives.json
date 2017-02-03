@@ -2,13 +2,13 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "http://scout.myshopify.io",
-  "resourcePath": "competitions",
+  "resourcePath": "objectives",
   "apis": [
     {
-      "path": "/competitions.json",
+      "path": "/objectives.json",
       "operations": [
         {
-          "summary": "Retrieve all Competitions",
+          "summary": "Retrieve all Objectives",
           "responseMessages": [
             {
               "code": 200,
@@ -21,22 +21,36 @@
               "message": "Unauthorized"
             }
           ],
-          "nickname": "Competitions#index",
+          "nickname": "Objectives#index",
           "method": "get"
         }
       ]
     },
     {
-      "path": "/competitions.json",
+      "path": "/objectives.json",
       "operations": [
         {
-          "summary": "To create a Competition",
+          "summary": "To create an objective",
           "parameters": [
             {
               "paramType": "form",
               "name": "name",
               "type": "string",
-              "description": "Name of Competition",
+              "description": "Name of Object",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "points",
+              "type": "float",
+              "description": "Point value",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "year",
+              "type": "integer",
+              "description": "Competition year",
               "required": true
             }
           ],
@@ -52,22 +66,22 @@
               "message": "Unprocessable Entity"
             }
           ],
-          "nickname": "Competitions#create",
+          "nickname": "Objectives#create",
           "method": "post"
         }
       ]
     },
     {
-      "path": "/competitions/{id}.json",
+      "path": "/objectives/{id}.json",
       "operations": [
         {
-          "summary": "To show a Competition",
+          "summary": "To show an objective",
           "parameters": [
             {
               "paramType": "path",
               "name": "id",
               "type": "integer",
-              "description": "Competition Id",
+              "description": "Objective Id",
               "required": false
             }
           ],
@@ -93,29 +107,43 @@
               "message": "Not Acceptable"
             }
           ],
-          "nickname": "Competitions#show",
+          "nickname": "Objectives#show",
           "method": "get"
         }
       ]
     },
     {
-      "path": "/competitions/{id}.json",
+      "path": "/objectives/{id}.json",
       "operations": [
         {
-          "summary": "Updates an existing Competition",
+          "summary": "Updates an existing Objective",
           "parameters": [
             {
               "paramType": "path",
               "name": "id",
               "type": "integer",
-              "description": "Competition Id",
-              "required": true
+              "description": "Objective Id",
+              "required": false
             },
             {
               "paramType": "form",
               "name": "name",
               "type": "string",
-              "description": "Competition name",
+              "description": "Objective name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "points",
+              "type": "float",
+              "description": "Point value",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "year",
+              "type": "integer",
+              "description": "Competition year",
               "required": false
             }
           ],
@@ -136,22 +164,22 @@
               "message": "Unprocessable Entity"
             }
           ],
-          "nickname": "Competitions#update",
+          "nickname": "Objectives#update",
           "method": "patch"
         }
       ]
     },
     {
-      "path": "/competitions/{id}.json",
+      "path": "/objectives/{id}.json",
       "operations": [
         {
-          "summary": "Deletes a Competition",
+          "summary": "Deletes an Objective",
           "parameters": [
             {
               "paramType": "path",
               "name": "id",
               "type": "integer",
-              "description": "Competition Id",
+              "description": "Objective Id",
               "required": true
             }
           ],
@@ -167,7 +195,7 @@
               "message": "Not Found"
             }
           ],
-          "nickname": "Competitions#destroy",
+          "nickname": "Objectives#destroy",
           "method": "delete"
         }
       ]

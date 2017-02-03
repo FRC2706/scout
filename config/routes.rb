@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # root 'competitions#index'
+  root 'competitions#index'
 
   resources :competitions do
     resources :matches, shallow: true

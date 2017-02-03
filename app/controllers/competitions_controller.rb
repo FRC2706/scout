@@ -7,6 +7,7 @@ class CompetitionsController < ApplicationController
   # GET /competitions.json
   swagger_api :index do
     summary "Retrieve all Competitions"
+    response :ok, "Success"
     response :unauthorized
   end
   def index
@@ -20,9 +21,9 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1
   # GET /competitions/1.json
   swagger_api :show do
-    summary "To show a competition"
+    summary "To show a Competition"
     param :path, :id, :integer, :optional, "Competition Id"
-    response :ok, "Success", :Match
+    response :ok, "Success"
     response :unauthorized
     response :not_acceptable
     response :not_found
@@ -47,8 +48,8 @@ class CompetitionsController < ApplicationController
   # POST /competitions
   # POST /competitions.json
   swagger_api :create do
-    summary "To create a competition"
-    param :form, "competition[name]", :string, :required, "Name of Competition"
+    summary "To create a Competition"
+    param :form, :name, :string, :required, "Name of Competition"
     response :success
     response :unprocessable_entity
   end

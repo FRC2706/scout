@@ -1,18 +1,42 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
+  swagger_controller :matches, "Matches"
+
   # GET /competition/:competition_id/matches
   # GET /competition/:competition_id/matches.json
+  swagger_api :index do
+    summary "Retrieve all Matches in a Competition"
+    param :path, :competition_id, :integer, :required, "Competition Id"
+    response :ok, "Success"
+    response :unauthorized
+  end
   def index
     competition = Competition.find(params[:competition_id])
     @matches = competition.matches
+    respond_to do |format|
+      format.html
+      format.json { render :json => @matches }
+    end
   end
 
   # GET /matches/1
   # GET /matches/1.json
+  swagger_api :show do
+    summary "To show a Match and all its events"
+    param :path, :id, :integer, :optional, "Match Id"
+    response :ok, "Success"
+    response :unauthorized
+    response :not_acceptable
+    response :not_found
+  end
   def show
     @autonomies = @match.autonomies
     @events = @match.events
+    respond_to do |format|
+      format.html
+      format.json { render :json => @match }
+    end
   end
 
   # GET /competition/:competition_id/matches/new
@@ -27,6 +51,21 @@ class MatchesController < ApplicationController
 
   # POST /competition/:competition_id/matches
   # POST /competition/:competition_id/matches.json
+  swagger_api :create do
+    summary "Creates a new Match"
+    param :path, :competition_id, :integer, :required, "Match Id"
+    param :form, :number, :integer, :required, "Match Number"
+    param :form, :team_id, :integer, :required, "Team Id (NOT Team Number)"
+    param :form, :time_defending, :integer, :optional, "Time Defending (seconds)"
+    param :form, :time_dead, :integer, :optional, "Time Dead (seconds)"
+    param :form, :start, :datetime, :optional, "Match start"
+    param :form, :human_player_notes, :text, :optional, "Human Player Notes"
+    param :form, :general_notes, :text, :optional, "General Notes"
+    param :form, :scout, :string, :optional, "Recording Scout"
+    param :form, :device_id, :string, :optional, "Device Identifier"
+    response :unauthorized
+    response :not_acceptable
+  end
   def create
     competition = Competition.find(params[:competition_id])
     @match = competition.matches.create(match_params)
@@ -44,6 +83,22 @@ class MatchesController < ApplicationController
 
   # PATCH/PUT /matches/1
   # PATCH/PUT /matches/1.json
+  swagger_api :update do
+    summary "Updates an existing Match"
+    param :path, :id, :integer, :required, "Match Id"
+    param :form, :number, :integer, :optional, "Match Number"
+    param :form, :team_id, :integer, :optional, "Team Id (NOT Team Number)"
+    param :form, :time_defending, :integer, :optional, "Time Defending (seconds)"
+    param :form, :time_dead, :integer, :optional, "Time Dead (seconds)"
+    param :form, :start, :datetime, :optional, "Match start"
+    param :form, :human_player_notes, :text, :optional, "Human Player Notes"
+    param :form, :general_notes, :text, :optional, "General Notes"
+    param :form, :scout, :string, :optional, "Recording Scout"
+    param :form, :device_id, :string, :optional, "Device Identifier"
+    response :unauthorized
+    response :not_found
+    response :unprocessable_entity
+  end
   def update
     respond_to do |format|
       if @match.update(match_params)
@@ -58,6 +113,12 @@ class MatchesController < ApplicationController
 
   # DELETE /matches/1
   # DELETE /matches/1.json
+  swagger_api :destroy do
+    summary "Deletes a Match"
+    param :path, :id, :integer, :required, "Match Id"
+    response :unauthorized
+    response :not_found
+  end
   def destroy
     competition = @match.competition
     @match.destroy

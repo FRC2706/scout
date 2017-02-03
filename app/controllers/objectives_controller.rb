@@ -1,15 +1,38 @@
 class ObjectivesController < ApplicationController
   before_action :set_objective, only: [:show, :edit, :update, :destroy]
 
+  swagger_controller :objectives, "Objectives"
+
   # GET /objectives
   # GET /objectives.json
+  swagger_api :index do
+    summary "Retrieve all Objectives"
+    response :ok, "Success"
+    response :unauthorized
+  end
   def index
     @objectives = Objective.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @objectives}
+    end
   end
 
   # GET /objectives/1
   # GET /objectives/1.json
+  swagger_api :show do
+    summary "To show an objective"
+    param :path, :id, :integer, :optional, "Objective Id"
+    response :ok, "Success"
+    response :unauthorized
+    response :not_acceptable
+    response :not_found
+  end
   def show
+    respond_to do |format|
+      format.html
+      format.json { render :json => @objective}
+    end
   end
 
   # GET /objectives/new
@@ -23,6 +46,14 @@ class ObjectivesController < ApplicationController
 
   # POST /objectives
   # POST /objectives.json
+  swagger_api :create do
+    summary "To create an objective"
+    param :form, :name, :string, :required, "Name of Object"
+    param :form, :points, :float, :required, "Point value"
+    param :form, :year, :integer, :required, "Competition year"
+    response :success
+    response :unprocessable_entity
+  end
   def create
     @objective = Objective.new(objective_params)
 
@@ -39,6 +70,16 @@ class ObjectivesController < ApplicationController
 
   # PATCH/PUT /objectives/1
   # PATCH/PUT /objectives/1.json
+  swagger_api :update do
+    summary "Updates an existing Objective"
+    param :path, :id, :integer, :optional, "Objective Id"
+    param :form, :name, :string, :optional, "Objective name"
+    param :form, :points, :float, :optional, "Point value"
+    param :form, :year, :integer, :optional, "Competition year"
+    response :unauthorized
+    response :not_found
+    response :unprocessable_entity
+  end
   def update
     respond_to do |format|
       if @objective.update(objective_params)
@@ -53,6 +94,12 @@ class ObjectivesController < ApplicationController
 
   # DELETE /objectives/1
   # DELETE /objectives/1.json
+  swagger_api :destroy do
+    summary "Deletes an Objective"
+    param :path, :id, :integer, :required, "Objective Id"
+    response :unauthorized
+    response :not_found
+  end
   def destroy
     @objective.destroy
     respond_to do |format|

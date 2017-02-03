@@ -4,8 +4,16 @@
   "basePath": "http://scout.myshopify.io",
   "apis": [
     {
+      "path": "/apidocs/matches.{format}",
+      "description": "Matches"
+    },
+    {
       "path": "/apidocs/competitions.{format}",
       "description": "Competitions"
+    },
+    {
+      "path": "/apidocs/objectives.{format}",
+      "description": "Objectives"
     }
   ],
   "authorizations": null,
