@@ -1,7 +1,7 @@
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
-  "basePath": "http://scout.myshopify.io",
+  "basePath": "http://ftp.team2706.ca:3000",
   "resourcePath": "matches",
   "apis": [
     {
@@ -9,15 +9,6 @@
       "operations": [
         {
           "summary": "Retrieve all Matches in a Competition",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "competition_id",
-              "type": "integer",
-              "description": "Competition Id",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -30,6 +21,15 @@
               "message": "Unauthorized"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "competition_id",
+              "type": "integer",
+              "description": "Competition Id",
+              "required": true
+            }
+          ],
           "nickname": "Matches#index",
           "method": "get"
         }
@@ -40,6 +40,18 @@
       "operations": [
         {
           "summary": "Creates a new Match",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
           "parameters": [
             {
               "paramType": "path",
@@ -112,18 +124,6 @@
               "required": false
             }
           ],
-          "responseMessages": [
-            {
-              "code": 401,
-              "responseModel": null,
-              "message": "Unauthorized"
-            },
-            {
-              "code": 406,
-              "responseModel": null,
-              "message": "Not Acceptable"
-            }
-          ],
           "nickname": "Matches#create",
           "method": "post"
         }
@@ -134,15 +134,6 @@
       "operations": [
         {
           "summary": "To show a Match and all its events",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Match Id",
-              "required": false
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -165,6 +156,15 @@
               "message": "Not Acceptable"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Match Id",
+              "required": false
+            }
+          ],
           "nickname": "Matches#show",
           "method": "get"
         }
@@ -175,78 +175,6 @@
       "operations": [
         {
           "summary": "Updates an existing Match",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Match Id",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "number",
-              "type": "integer",
-              "description": "Match Number",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "team_id",
-              "type": "integer",
-              "description": "Team Id (NOT Team Number)",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "time_defending",
-              "type": "integer",
-              "description": "Time Defending (seconds)",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "time_dead",
-              "type": "integer",
-              "description": "Time Dead (seconds)",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "start",
-              "type": "datetime",
-              "description": "Match start",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "human_player_notes",
-              "type": "text",
-              "description": "Human Player Notes",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "general_notes",
-              "type": "text",
-              "description": "General Notes",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "scout",
-              "type": "string",
-              "description": "Recording Scout",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "device_id",
-              "type": "string",
-              "description": "Device Identifier",
-              "required": false
-            }
-          ],
           "responseMessages": [
             {
               "code": 401,
@@ -264,6 +192,78 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Match Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "number",
+              "type": "integer",
+              "description": "Match Number",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "team_id",
+              "type": "integer",
+              "description": "Team Id (NOT Team Number)",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "time_defending",
+              "type": "integer",
+              "description": "Time Defending (seconds)",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "time_dead",
+              "type": "integer",
+              "description": "Time Dead (seconds)",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "start",
+              "type": "datetime",
+              "description": "Match start",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "human_player_notes",
+              "type": "text",
+              "description": "Human Player Notes",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "general_notes",
+              "type": "text",
+              "description": "General Notes",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "scout",
+              "type": "string",
+              "description": "Recording Scout",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "device_id",
+              "type": "string",
+              "description": "Device Identifier",
+              "required": false
+            }
+          ],
           "nickname": "Matches#update",
           "method": "patch"
         }
@@ -274,15 +274,6 @@
       "operations": [
         {
           "summary": "Deletes a Match",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Match Id",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 401,
@@ -293,6 +284,15 @@
               "code": 404,
               "responseModel": null,
               "message": "Not Found"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Match Id",
+              "required": true
             }
           ],
           "nickname": "Matches#destroy",

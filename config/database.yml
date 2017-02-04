@@ -51,4 +51,5 @@ production:
   <<: *default
   database: scout_production
   username: scout
-  password: <%= ENV['SCOUT_DATABASE_PASSWORD'] %>
+  password: 2706IsWatching!
+  host: localhost

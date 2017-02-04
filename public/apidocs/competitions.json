@@ -1,11 +1,11 @@
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
-  "basePath": "http://scout.myshopify.io",
+  "basePath": "http://ftp.team2706.ca:3000",
   "resourcePath": "competitions",
   "apis": [
     {
-      "path": "/competitions.json",
+      "path": "/",
       "operations": [
         {
           "summary": "Retrieve all Competitions",
@@ -31,15 +31,6 @@
       "operations": [
         {
           "summary": "To create a Competition",
-          "parameters": [
-            {
-              "paramType": "form",
-              "name": "name",
-              "type": "string",
-              "description": "Name of Competition",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -52,6 +43,15 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Name of Competition",
+              "required": true
+            }
+          ],
           "nickname": "Competitions#create",
           "method": "post"
         }
@@ -62,15 +62,6 @@
       "operations": [
         {
           "summary": "To show a Competition",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Competition Id",
-              "required": false
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -93,6 +84,15 @@
               "message": "Not Acceptable"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Competition Id",
+              "required": false
+            }
+          ],
           "nickname": "Competitions#show",
           "method": "get"
         }
@@ -103,22 +103,6 @@
       "operations": [
         {
           "summary": "Updates an existing Competition",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Competition Id",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "name",
-              "type": "string",
-              "description": "Competition name",
-              "required": false
-            }
-          ],
           "responseMessages": [
             {
               "code": 401,
@@ -136,6 +120,22 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Competition Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Competition name",
+              "required": false
+            }
+          ],
           "nickname": "Competitions#update",
           "method": "patch"
         }
@@ -146,15 +146,6 @@
       "operations": [
         {
           "summary": "Deletes a Competition",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Competition Id",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 401,
@@ -165,6 +156,15 @@
               "code": 404,
               "responseModel": null,
               "message": "Not Found"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Competition Id",
+              "required": true
             }
           ],
           "nickname": "Competitions#destroy",
