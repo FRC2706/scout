@@ -86,7 +86,7 @@ Rails.application.configure do
 
   config.public_file_server.enabled = true
   config.assets.compile = true
-  config.assets.precompile += %w( * )
+  config.assets.precompile += [/^[-_a-zA-Z0-9]*\..*/]
 
   # Host name
   config.x.full_host = "http://ftp.team2706.ca:3000"
