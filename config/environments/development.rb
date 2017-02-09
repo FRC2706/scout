@@ -54,4 +54,7 @@ Rails.application.configure do
 
   # Middleware for settings CORS headers (for dev testing API with swagger UI
   config.middleware.insert_before ActionDispatch::Static, CorsMiddleware
+
+  # Host name
+  config.x.full_host = "http://scout.myshopify.io"
 end

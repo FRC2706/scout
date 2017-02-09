@@ -85,4 +85,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.public_file_server.enabled = true
+  config.assets.compile = true
+  config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
+
+  # Host name
+  config.x.full_host = "http://ftp.team2706.ca:3000"
 end
