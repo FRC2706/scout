@@ -116,6 +116,7 @@ class ObjectivesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def objective_params
-      params.fetch(:objective, {}).permit(:name, :points, :year)
+      #params.fetch(:objective, {}).permit(:name, :points, :year)
+      params.permit(:name, :points, :year)
     end
 end
