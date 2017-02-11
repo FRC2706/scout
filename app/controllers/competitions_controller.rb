@@ -57,7 +57,6 @@ class CompetitionsController < ApplicationController
     response :unprocessable_entity
   end
   def create
-    debugger
     @competition = Competition.new(competition_params)
 
     respond_to do |format|
