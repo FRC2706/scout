@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Teams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td><b>Number</b></td>
+      <td><b>Name</b></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= link_to team.number, team_path(number: team.number) %></td>
+        <td><%= team.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

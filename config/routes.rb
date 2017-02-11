@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
 
   resources :objectives
+  resources :teams, param: :number
 end
