@@ -14,7 +14,7 @@ class CompetitionsController < ApplicationController
     @competitions = Competition.all
     respond_to do |format|
       format.html
-      format.json { render :json => @competitions}
+      format.json { render :json => @competitions }
     end
   end
 
@@ -32,7 +32,8 @@ class CompetitionsController < ApplicationController
     @matches = @competition.matches.all
     respond_to do |format|
       format.html
-      format.json { render :json => @matches}
+      #format.json { render :json => @matches }
+      format.json { render :json => @competition }
     end
   end
 
@@ -108,7 +109,10 @@ class CompetitionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_competition
-      @competition = Competition.find(params[:id])
+      @competition = Competition.find_by(tba_code: params[:id])
+      if @competition.nil?
+        @competition = Competition.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

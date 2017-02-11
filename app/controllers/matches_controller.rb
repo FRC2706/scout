@@ -12,7 +12,10 @@ class MatchesController < ApplicationController
     response :unauthorized
   end
   def index
-    competition = Competition.find(params[:competition_id])
+    competition = Competition.find_by(tba_code: params[:competition_id])
+    if competition.nil?
+      competition = Competition.find(params[:competition_id])
+    end
     @matches = competition.matches
     respond_to do |format|
       format.html
@@ -41,7 +44,10 @@ class MatchesController < ApplicationController
 
   # GET /competition/:competition_id/matches/new
   def new
-    competition = Competition.find(params[:competition_id])
+    competition = Competition.find_by(tba_code: params[:competition_id])
+    if competition.nil?
+      competition = Competition.find(params[:competition_id])
+    end
     @match = competition.matches.build
   end
 
@@ -67,7 +73,10 @@ class MatchesController < ApplicationController
     response :not_acceptable
   end
   def create
-    competition = Competition.find(params[:competition_id])
+    competition = Competition.find_by(tba_code: params[:competition_id])
+    if competition.nil?
+      competition = Competition.find(params[:competition_id])
+    end
     @match = competition.matches.create(match_params)
 
     respond_to do |format|
