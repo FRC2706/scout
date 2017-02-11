@@ -20,11 +20,11 @@
       <tr>
         <td><%= link_to competition.id, competition %></td>
         <td><%= competition.name %></td>
-        <td><%= competition.start_date.strftime("%b-%d-%Y") %></td>
-        <td><%= competition.end_date.strftime("%b-%d-%Y") %></td>
-        <td><%= competition.city %></td>
-        <td><%= competition.province %></td>
-        <td><%= competition.country %></td>
+        <td><%= competition&.start_date&.strftime("%b-%d-%Y") %></td>
+        <td><%= competition&.end_date&.strftime("%b-%d-%Y") %></td>
+        <td><%= competition&.city %></td>
+        <td><%= competition&.province %></td>
+        <td><%= competition&.country %></td>
         <td><%= competition.tba_code %></td>
       </tr>
     <% end %>

@@ -5,15 +5,15 @@
   <tr>
     <td>
       <b>Date:</b>
-      <%= @competition.start_date.strftime("%b-%d-%Y") %>
+      <%= @competition&.start_date&.strftime("%b-%d-%Y") %>
       <b>-</b>
-      <%= @competition.end_date.strftime("%b-%d-%Y") %>
+      <%= @competition&.end_date&.strftime("%b-%d-%Y") %>
     </td>
     <td>
       <b>Location:</b>
-      <%= @competition.city %>,
-      <%= @competition.province %>,
-      <%= @competition.country %>
+      <%= @competition&.city %>,
+      <%= @competition&.province %>,
+      <%= @competition&.country %>
     </td>
   </tr>
 </table>

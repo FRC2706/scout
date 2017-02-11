@@ -51,10 +51,13 @@ class CompetitionsController < ApplicationController
   swagger_api :create do
     summary "To create a Competition"
     param :form, :name, :string, :required, "Name of Competition"
+    param :form, :tba_code, :string, :required, "The Blue Alliance Code"
+    param :form, :year, :integer, :required, "Competition year"
     response :success
     response :unprocessable_entity
   end
   def create
+    debugger
     @competition = Competition.new(competition_params)
 
     respond_to do |format|
@@ -118,6 +121,6 @@ class CompetitionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def competition_params
       #params.fetch(:competition, {}).permit(:name)
-      params.permit(:name)
+      params.require(:competition).permit(:name, :tba_code, :year)
     end
 end
