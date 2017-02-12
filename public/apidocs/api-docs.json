@@ -4,6 +4,10 @@
   "basePath": "http://scout.myshopify.io",
   "apis": [
     {
+      "path": "/apidocs/team_data.{format}",
+      "description": "Team Data"
+    },
+    {
       "path": "/apidocs/competitions.{format}",
       "description": "Competitions"
     },
@@ -14,6 +18,10 @@
     {
       "path": "/apidocs/objectives.{format}",
       "description": "Objectives"
+    },
+    {
+      "path": "/apidocs/teams.{format}",
+      "description": "Teams"
     }
   ],
   "authorizations": null,

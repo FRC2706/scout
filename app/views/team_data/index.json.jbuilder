@@ -1,0 +1,1 @@
+json.array! @team_data, partial: 'team_data/team_datum', as: :team_datum

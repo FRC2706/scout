@@ -1,0 +1,1 @@
+json.partial! "team_data/team_datum", team_datum: @team_datum

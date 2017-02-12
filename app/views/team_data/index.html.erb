@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Team Data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td><b>Id</b></td>
+      <td><b>Competition</b></td>
+      <td><b>Team Number</b></td>
+      <td><b>Team Name</b></td>
+      <td><b>Kind</b></td>
+      <td><b>Data</b></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team_data.each do |team_datum| %>
+      <tr>
+        <td><%= link_to team_datum.id, team_datum %></td>
+        <td><%= team_datum.competition.name %></td>
+        <td><%= team_datum.team.number %></td>
+        <td><%= team_datum.team.name %></td>
+        <td><%= team_datum.kind %></td>
+        <td><%= team_datum.data %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

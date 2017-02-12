@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<b>Competition Id:</b>
+<%=  @team_datum.competition_id %>
+<br>
+<b>Team Id:</b>
+<%=  @team_datum.team_id %>
+<br>
+<b>Kind:</b>
+<%=  @team_datum.kind %>
+<br>
+<b>Data:</b>
+<%=  @team_datum.data %>
+<br>
+<br>
+<%= link_to 'Edit', edit_team_datum_path(@team_datum) %> |
+<%= link_to 'Back', team_data_path %>

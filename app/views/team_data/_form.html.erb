@@ -1,0 +1,34 @@
+<%= form_for(team_datum) do |f| %>
+  <% if team_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(team_datum.errors.count, "error") %> prohibited this team_datum from being saved:</h2>
+
+      <ul>
+      <% team_datum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :competition_id %><br>
+    <%= f.text_field :competition_id %>
+  </div>
+  <div class="field">
+    <%= f.label :team_id %><br>
+    <%= f.text_field :team_id %>
+  </div>
+  <div class="field">
+    <%= f.label :kind %><br>
+    <%= f.text_field :kind %>
+  </div>
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.text_area :data %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

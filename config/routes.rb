@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :team_data
   root 'competitions#index'
 
   resources :competitions do
