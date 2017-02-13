@@ -29,6 +29,15 @@ class TeamsController < ApplicationController
     response :not_found
   end
   def show
+    @team_datum = @team.team_datum
+    @matches = @team.matches
+    @competitions = []
+    @team_datum.each do |team_datum|
+      @competitions.push(team_datum.competition)
+    end
+    @matches.each do |match|
+      @competitions.push(match.competition) unless @competitions.include?(match.competition)
+    end
     respond_to do |format|
       format.html
       format.json { render :json => @team}
