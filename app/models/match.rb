@@ -6,8 +6,13 @@ class Match < ApplicationRecord
 
   validates :number, presence: true
 
+  def team_number
+    team&.number
+  end
+
   def as_json(options={})
     super.as_json(options).merge(
+      team_number: team&.number,
       autonomies: autonomies,
       events: events
     )

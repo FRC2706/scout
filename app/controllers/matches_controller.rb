@@ -61,7 +61,7 @@ class MatchesController < ApplicationController
     summary "Creates a new Match"
     param :path, :competition_id, :integer, :required, "Match Id"
     param :form, :number, :integer, :required, "Match Number"
-    param :form, :team_id, :integer, :required, "Team Id (NOT Team Number)"
+    param :form, :team_number, :integer, :required, "Team Number"
     param :form, :time_defending, :integer, :optional, "Time Defending (seconds)"
     param :form, :time_dead, :integer, :optional, "Time Dead (seconds)"
     param :form, :start, :datetime, :optional, "Match start"
@@ -77,7 +77,16 @@ class MatchesController < ApplicationController
     if competition.nil?
       competition = Competition.find(params[:competition_id])
     end
-    @match = competition.matches.create(match_params)
+    team_number = if match_params['team_number']
+      match_params['team_number']
+    else
+      match_params['team']['number']
+    end
+    team_id = Team.find_by(number: team_number)&.id
+    match_altered_params = match_params.to_h
+    match_altered_params.merge!(team_id: team_id)
+    match_altered_params.except!(:team_number, :team)
+    @match = competition.matches.create(match_altered_params)
 
     respond_to do |format|
       if @match.save
@@ -145,7 +154,11 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      #params.fetch(:match, {}).permit(:number, :competition_id, :team_id)
-      params.require(:match).permit(:competition_id, :number, :team_id, :time_defending, :time_dead, :start, :human_player_notes, :general_notes, :scout, :device_id)
+      if request.format.json?
+        params.permit(:competition_id, :number, :team_number, :time_defending, :time_dead, :start, :human_player_notes, :general_notes, :scout, :device_id)
+        #params.fetch(:match, {}).permit(:number, :competition_id, :team_id)
+      else
+        params.require(:match).permit(:competition_id, :number, :team_number, :time_defending, :time_dead, :start, :human_player_notes, :general_notes, :scout, :device_id, team: [:number])
+      end
     end
 end

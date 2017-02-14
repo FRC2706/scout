@@ -11,6 +11,48 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.text_field :number %>
+  </div>
+
+
+  <%= f.fields_for :team do |team_form| %>
+    <%= f.label :team_number %><br>
+    <%= team_form.text_field :number %>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :time_defending %><br>
+    <%= f.text_field :time_defending %>
+  </div>
+  <div class="field">
+    <%= f.label :time_dead %><br>
+    <%= f.text_field :time_dead %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br>
+    <%= f.text_field :start %>
+  </div>
+  <div class="field">
+    <%= f.label :human_player_notes %><br>
+    <%= f.text_area :human_player_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :general_notes %><br>
+    <%= f.text_area :general_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :scout %><br>
+    <%= f.text_field :scout %>
+  </div>
+  <div class="field">
+    <%= f.label :device_id %><br>
+    <%= f.text_field :device_id %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

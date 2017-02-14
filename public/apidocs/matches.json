@@ -69,9 +69,9 @@
             },
             {
               "paramType": "form",
-              "name": "team_id",
+              "name": "team_number",
               "type": "integer",
-              "description": "Team Id (NOT Team Number)",
+              "description": "Team Number",
               "required": true
             },
             {
