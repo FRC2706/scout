@@ -75,7 +75,6 @@ class MatchesController < ApplicationController
     response :not_acceptable
   end
   def create
-    debugger
     competition = Competition.find_by(tba_code: params[:competition_id])
     if competition.nil?
       competition = Competition.find(params[:competition_id])

@@ -22,7 +22,8 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Match.count') do
       @competition = competitions(:toronto)
       @team = teams(:merge_robotics)
-      post competition_matches_url(competition_id: @competition.id), params: { match: { number: 100, competition_id: @competition.id, team_id: @team.id } }
+      post competition_matches_url(
+        competition_id: @competition.id), params: { match: { number: 100, competition_id: @competition.id, team_id: @team.id } }
     end
 
     assert_redirected_to match_url(Match.last)
