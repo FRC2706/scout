@@ -57,7 +57,7 @@
               "paramType": "path",
               "name": "competition_id",
               "type": "integer",
-              "description": "Match Id",
+              "description": "Competition Id",
               "required": true
             },
             {
@@ -121,6 +121,20 @@
               "name": "device_id",
               "type": "string",
               "description": "Device Identifier",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "autonomies",
+              "type": "text",
+              "description": "Autonomous Event Array",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "events",
+              "type": "text",
+              "description": "Teleop Event Array",
               "required": false
             }
           ],

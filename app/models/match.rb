@@ -10,9 +10,14 @@ class Match < ApplicationRecord
     team&.number
   end
 
+  def competition_tba_code
+    competition&.tba_code
+  end
+
   def as_json(options={})
     super.as_json(options).merge(
-      team_number: team&.number,
+      team_number: team_number,
+      competition_tba_code: competition_tba_code,
       autonomies: autonomies,
       events: events
     )

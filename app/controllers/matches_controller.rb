@@ -16,10 +16,10 @@ class MatchesController < ApplicationController
     if competition.nil?
       competition = Competition.find(params[:competition_id])
     end
-    @matches = competition.matches
+    @matches = competition.matches.includes(:autonomies, :events)
     respond_to do |format|
       format.html
-      format.json { render :json => @matches }
+      format.json { render :json => @matches, :except => [:team_id, :competition_id] }
     end
   end
 
@@ -38,7 +38,7 @@ class MatchesController < ApplicationController
     @events = @match.events
     respond_to do |format|
       format.html
-      format.json { render :json => @match }
+      format.json { render :json => @match, :except => [:team_id, :competition_id] }
     end
   end
 
@@ -59,7 +59,7 @@ class MatchesController < ApplicationController
   # POST /competition/:competition_id/matches.json
   swagger_api :create do
     summary "Creates a new Match"
-    param :path, :competition_id, :integer, :required, "Match Id"
+    param :path, :competition_id, :integer, :required, "Competition Id"
     param :form, :number, :integer, :required, "Match Number"
     param :form, :team_number, :integer, :required, "Team Number"
     param :form, :time_defending, :integer, :optional, "Time Defending (seconds)"
@@ -69,10 +69,13 @@ class MatchesController < ApplicationController
     param :form, :general_notes, :text, :optional, "General Notes"
     param :form, :scout, :string, :optional, "Recording Scout"
     param :form, :device_id, :string, :optional, "Device Identifier"
+    param :form, :autonomies, :text, :optional, "Autonomous Event Array"
+    param :form, :events, :text, :optional, "Teleop Event Array"
     response :unauthorized
     response :not_acceptable
   end
   def create
+    debugger
     competition = Competition.find_by(tba_code: params[:competition_id])
     if competition.nil?
       competition = Competition.find(params[:competition_id])
@@ -146,7 +149,7 @@ class MatchesController < ApplicationController
     end
   end
 
-  private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_match
       @match = Match.find(params[:id])
@@ -155,7 +158,7 @@ class MatchesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
       if request.format.json?
-        params.permit(:competition_id, :number, :team_number, :time_defending, :time_dead, :start, :human_player_notes, :general_notes, :scout, :device_id)
+        params.permit(:competition_id, :number, :team_number, :time_defending, :time_dead, :start, :human_player_notes, :general_notes, :scout, :device_id, events: [], autonomies: [])
         #params.fetch(:match, {}).permit(:number, :competition_id, :team_id)
       else
         params.require(:match).permit(:competition_id, :number, :team_number, :time_defending, :time_dead, :start, :human_player_notes, :general_notes, :scout, :device_id, team: [:number])

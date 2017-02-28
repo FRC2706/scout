@@ -32,7 +32,6 @@ class CompetitionsController < ApplicationController
     @matches = @competition.matches.all
     respond_to do |format|
       format.html
-      #format.json { render :json => @matches }
       format.json { render :json => @competition }
     end
   end
