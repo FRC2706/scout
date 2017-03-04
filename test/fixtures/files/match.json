@@ -1,0 +1,18 @@
+{
+  "number": 2,
+  "team_number": 2706,
+  "events":
+    [ {
+      "position_x" : 0,
+      "position_y" : 0
+    },
+      {
+        "position_x" : 1,
+        "position_y" : 1
+    }],
+  "autonomies":
+    [{
+      "start_x": 10,
+      "start_y": 10
+    }]
+}

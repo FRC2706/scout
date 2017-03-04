@@ -1,10 +1,12 @@
 class Match < ApplicationRecord
   belongs_to :competition
   belongs_to :team
-  has_many :autonomies
-  has_many :events
+  has_many :autonomies, inverse_of: :match
+  has_many :events, inverse_of: :match
 
   validates :number, presence: true
+
+  accepts_nested_attributes_for :events, allow_destroy: true
 
   def team_number
     team&.number

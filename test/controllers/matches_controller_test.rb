@@ -19,14 +19,19 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create match" do
-    assert_difference('Match.count') do
+    Match.destroy_all
+    Event.destroy_all
+    #assert_difference('Match.count') do
       @competition = competitions(:toronto)
       @team = teams(:merge_robotics)
-      post competition_matches_url(
-        competition_id: @competition.id), params: { match: { number: 100, competition_id: @competition.id, team_id: @team.id } }
-    end
+      debugger
+      post competition_matches_url(competition_id: @competition.id),
+        File.read('test/fixtures/files/match.json'),
+        {'ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json'}
+    #end
 
-    assert_redirected_to match_url(Match.last)
+    #assert_redirected_to match_url(Match.last)
+    assert_response :created
   end
 
   test "should show match" do

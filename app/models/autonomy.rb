@@ -1,4 +1,4 @@
 class Autonomy < ApplicationRecord
-  belongs_to :objective
-  belongs_to :match
+  belongs_to :objective, optional: true
+  belongs_to :match, optional: true
 end
