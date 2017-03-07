@@ -4,7 +4,8 @@
   "events":
     [ {
       "position_x" : 0,
-      "position_y" : 0
+      "position_y" : 0,
+      "success": true
     },
       {
         "position_x" : 1,

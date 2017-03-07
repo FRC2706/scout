@@ -24,7 +24,7 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
     #assert_difference('Match.count') do
       @competition = competitions(:toronto)
       @team = teams(:merge_robotics)
-      debugger
+
       post competition_matches_url(competition_id: @competition.id),
         File.read('test/fixtures/files/match.json'),
         {'ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json'}

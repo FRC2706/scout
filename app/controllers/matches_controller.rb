@@ -75,7 +75,6 @@ class MatchesController < ApplicationController
     response :not_acceptable
   end
   def create
-    debugger
     competition = Competition.find_by(tba_code: params[:competition_id])
     if competition.nil?
       competition = Competition.find(params[:competition_id])
@@ -108,7 +107,6 @@ class MatchesController < ApplicationController
         format.html { render :new }
         format.json { render json: @match.errors, status: :unprocessable_entity }
       end
-      debugger
     end
   end
 
