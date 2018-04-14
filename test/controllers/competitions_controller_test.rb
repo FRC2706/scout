@@ -16,7 +16,7 @@ class CompetitionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create competition" do
-    assert_difference('Competition.count') do
+    assert_difference 'Competition.count', 2 do
       post competitions_url, params: { competition: { name: 'Test' } }
     end
 
